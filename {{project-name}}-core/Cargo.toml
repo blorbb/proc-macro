@@ -1,0 +1,22 @@
+[package]
+name = "{{project-name}}-core"
+version = "0.1.0"
+edition = "2021"
+authors = ["{{authors}}"]
+
+[dependencies]
+{% case syn_features -%}
+    {%- when "Default" -%}
+        syn = { version = "2" }
+    {%- when "full + extra-traits" -%}
+        syn = { version = "2", features = ["full", "extra-traits"] }
+    {%- when "full" -%}
+        syn = { version = "2", features = ["full"] }
+    {%- when "extra-traits" -%}
+        syn = { version = "2", features = ["extra-traits"] }
+{%- endcase %}
+quote = "1"
+proc-macro2 = "1"
+{% if include_error -%}
+proc-macro-error = { version = "1", default-features = false }
+{% endif %}

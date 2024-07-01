@@ -1,0 +1,37 @@
+[template]
+ignore = ["README.md"]
+
+[hooks]
+post = ["config-readme.rhai", "config-ui-tests.rhai", "check-macro-name.rhai"]
+
+[placeholders.macro_name]
+prompt = "Macro Name"
+type = "string"
+regex = "^[a-zA-Z_]\\w*$"
+
+[placeholders.macro_type]
+prompt = "Macro Type"
+type = "string"
+choices = ["Function-like", "Derive", "Attribute"]
+default = "Function-like"
+
+[placeholders.include_error]
+prompt = "Include proc-macro-error"
+type = "bool"
+default = true
+
+[placeholders.syn_features]
+prompt = "Syn Features"
+type = "string"
+choices = ["Default", "full + extra-traits", "full", "extra-traits"]
+default = "Default"
+
+[placeholders.include_tests]
+prompt = "Include UI tests"
+type = "bool"
+default = true
+
+[placeholders.include_readmes]
+prompt = "Include README.md files"
+type = "bool"
+default = true
